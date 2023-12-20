@@ -1,0 +1,14 @@
+syntax = "proto3";
+option go_package = "github.com/alexilallas/grpcproxy/internal/grpc";
+import "google/protobuf/empty.proto";
+
+service TaskManager {
+  rpc CreateTask (google.protobuf.Empty) returns (Task) {}
+  rpc GetTask (Task) returns (Task) {}
+}
+
+message Task {
+  string id = 1;
+  string status = 2;
+  int32 httpStatusCode = 3;
+}
